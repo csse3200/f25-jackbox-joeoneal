@@ -1,0 +1,61 @@
+body {
+    background-color: white; 
+    background-image: linear-gradient(to bottom, rgb(0, 221, 255), white);
+    min-height: 100vh;
+
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    text-shadow: 5px 5px grey;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    font-style: italic;
+    font-size: 30px;
+}
+
+#timer {
+    text-align: center;
+    padding-bottom: 3%;
+    font-size: 25px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    width: auto; 
+    height: 40px;
+    padding: 15px 30px;
+    font-size: 30px;
+    gap: 15px;
+
+}
+
+.form-container answer {
+    color: aquamrine;
+}
+
+.h3-container {
+    justify-content: center;
+}
+
+#submissions-container {
+    display: flex;
+    justify-content: center;
+}
+
+#score-container {
+    display: flex;
+    justify-content: center;
+}
+
+#score-container h3 {
+    font-size: 35px;
+    color: white;
+    text-shadow: 2px 2px black;
+}

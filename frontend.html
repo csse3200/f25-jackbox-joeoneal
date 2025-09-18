@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Jackbox-Lite Classroom Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Jackbox Classroom Game</h1>
@@ -9,19 +10,23 @@
 
   <div id="timer"></div>
 
-  <form id="answerForm">
+  <form class="form-container" id="answerForm">
     <input type="text" id="team" placeholder="Team Name" required />
     <input type="text" id="answer" placeholder="Your Answer" required />
     <button type="submit">Submit Answer</button>
   </form>
 
-  <h3>Submissions (random order):</h3>
-  <ul id="submissions"></ul>
+  <div id="submissions-container">
+    <h3>Submissions (random order):</h3>
+    <ul id="submissions"></ul>
+  </div>
 
-  <h3>Leaderboard:</h3>
-  <ul id="scores"></ul>
-
-  <script src="app_working.js"></script>>
+  <div id="score-container">
+    <h3>LEADERBOARD:</h3>
+    <ul id="scores"></ul>
+  </div>
+  
+  <script src="app_working.js"></script>
     
 </body>
 </html>

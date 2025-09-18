@@ -1,9 +1,23 @@
-    const API_URL = "https://jackbox-backend.onrender.com";
-
+const API_URL = "https://jackbox-backend.onrender.com";
+    const submissions = document.querySelector("#submissions")
+    const scores = document.querySelector("#scores")
 
 
     // Load submissions
     function loadSubmissions() {
+      fetch(API_URL + "/submissions")
+        .then(response => {
+          response.json()
+          .then(data => {
+            console.log("submissions", data)
+            submissions.innerHTML = ""
+            data.forEach(answer => {
+              submission_element = document.createElement("p")
+              submission_element.textContent = `Team: ${answer.team} Answer: ${answer.answer}`
+              submissions.appendChild(submission_element)
+            })
+        })
+      })
       //the endpoint is at API_URL+/submissions
       //You should retrieve the submissions and put them in the ul 'submissions'
       
@@ -11,6 +25,18 @@
 
     // Load scores
     function loadScores() {
+      
+      fetch(API_URL + "/scores")
+        .then(response => response.json())
+        .then(data => {
+          console.log("scores", data)
+          scores.innerHTML = ""
+          Object.entries(data).forEach(([answer, score]) => {
+            score_element = document.createElement("p")
+            score_element.textContent = answer + " " + score
+            scores.appendChild(score_element)
+          })
+        })
       //the endpoint is at API_URL+/scores
       //You should retrieve the submissions and put them in the ul 'scores'
       
@@ -21,13 +47,32 @@
       e.preventDefault();
       const team = document.getElementById("team").value;
       const answer = document.getElementById("answer").value;
-
+      let data = {
+        team: team,
+        answer: answer
+      }
+      fetch(API_URL + "/submit", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type" : "application/json"
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          loadSubmissions()
+        } else {
+          console.log("post failed")
+        }
+      })
       //post to the API_URL + /submit
       //use correct headers
       //api expects team and answer
       //after a successful fetch, loadSubmissions()
         
     });
+
+
 
 
     /*
